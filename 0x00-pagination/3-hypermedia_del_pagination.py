@@ -39,41 +39,43 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            """
-            Return a dictionary with pagination information that's deletion-resilient
+        """
+        Return a dictionary with pagination information
+        that's deletion-resilient
 
-            Args:
-            index (int, optional): Index of the record to retrieve. Defaults to None.
+        Args:
+            index (int, optional): Index of the record to retrieve.
+            Defaults to None.
             page_size (int): Number of records per page. Defaults to 10.
 
-            Returns:
-            Dict: Pagination information.
-                - index: Current start index
-                - next_index: Next index to query
-                - page_size: Current page size
-                - data: Page content
-            """
-            if index is None:
-                index = 0
+        Returns:
+        Dict: Pagination information.
+            - index: Current start index
+            - next_index: Next index to query
+            - page_size: Current page size
+            - data: Page content
+        """
+        if index is None:
+            index = 0
 
-            indexed_data = self.indexed_dataset()
+        indexed_data = self.indexed_dataset()
 
-            assert index >= 0
-            assert index <= len(self.dataset())
+        assert index >= 0
+        assert index <= len(self.dataset())
 
-            data = []
-            current_index = index
+        data = []
+        current_index = index
 
-            while len(data) < page_size and current_index < len(self.dataset()):
-                if current_index in indexed_data:
-                    data.append(indexed_data[current_index])
-                current_index += 1
+        while len(data) < page_size and current_index < len(self.dataset()):
+            if current_index in indexed_data:
+                data.append(indexed_data[current_index])
+            current_index += 1
 
-            next_index = current_index
+        next_index = current_index
 
-            return {
-                "index": index,
-                "next_index": next_index,
-                "page_size": page_size,
-                "data": data
-            }
+        return {
+            "index": index,
+            "next_index": next_index,
+            "page_size": page_size,
+            "data": data
+        }
