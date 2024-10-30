@@ -7,6 +7,7 @@ class BasicCache(BaseCaching):
     """Basic Dictionary"""
 
     def __init__(self):
+        """Initialize"""
         super().__init__()
 
     def put(self, key, item):
