@@ -7,7 +7,7 @@ class BasicCache(BaseCaching):
     """Basic Dictionary"""
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
 
     def put(self, key, item):
         """
@@ -34,5 +34,3 @@ class BasicCache(BaseCaching):
 
         value = self.cache_data.get(key)
         return value
-
-
