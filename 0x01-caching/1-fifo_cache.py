@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
+"""FIFO Cache"""
+
+
 from basic_caching import BaseCaching
 from collections import OrderedDict
-"""FIFO Cache"""
 
 
 class FIFOCache(BaseCaching):
     """A class representation for FIFO Caching"""
 
     def __init__(self):
-        """Initialize cache"""
+        """Initialize"""
         super().__init__()
         self.cache_data = OrderedDict()
 
