@@ -3,7 +3,7 @@
 
 
 from collections import OrderedDict
-from basic_caching import BaseCaching
+from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
