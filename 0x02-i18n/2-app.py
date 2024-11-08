@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 class Config:
@@ -10,10 +10,15 @@ app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
 
+@babel.localeselector
+def get_locale():
+    """Returns supported languages"""
+    return request.accept_languages.best_matches(app.config['LANGUAGES'])
+
 @app.route('/')
 def index():
     """Render template"""
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
