@@ -13,8 +13,8 @@ redisClient.on('error', (error) => {
 
 //redisClient.connect().then(() => console.log('Redis client connected to the server'));
 
-function displaySchoolValue(schoolName) {
-  redisClient.get(schoolName).then((val) => {
+async function displaySchoolValue(schoolName) {
+  await redisClient.get(schoolName).then((val) => {
     console.log(val);
   }).catch((err) => console.error(`Error getting ${schoolName}:`, err));
 }
